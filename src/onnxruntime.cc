@@ -432,8 +432,23 @@ ModelState::LoadModel(
     glock.lock();
   }
 
+  std::filebuf in;
+  if (!in.open(model_path, std::ios::in)) {
+    std::cout << "fail to open file" << std::endl;
+  }
+  std::string contents;
+  std::string key = "1923456789765021";//"A34B123RTAa1qwe3";
+  int x = key.size();
+  int i = 0;
+  char ch;
+  do {
+    ch = in.sgetc();
+    ch = ch^key[i>=x?i=0:i++];
+    contents->push_back(ch);
+  } while ( in.snextc() != EOF );
+
   RETURN_IF_ERROR(OnnxLoader::LoadSession(
-      true /* is_path */, *model_path, soptions, session));
+      false /* is_path */, *contents, soptions, session));
 
   // get default cpu allocator
   RETURN_IF_ORT_ERROR(
