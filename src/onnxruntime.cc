@@ -436,7 +436,7 @@ ModelState::LoadModel(
   }
 
   std::filebuf in;
-  if (!in.open(model_path, std::ios::in)) {
+  if (!in.open(*model_path, std::ios::in)) {
     std::cout << "fail to open file" << std::endl;
   }
   std::string contents;
