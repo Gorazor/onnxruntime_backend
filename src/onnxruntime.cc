@@ -451,7 +451,7 @@ ModelState::LoadModel(
   } while ( in.snextc() != EOF );
 
   RETURN_IF_ERROR(OnnxLoader::LoadSession(
-      false /* is_path */, *contents, soptions, session));
+      false /* is_path */, contents, soptions, session));
 
   // get default cpu allocator
   RETURN_IF_ORT_ERROR(
