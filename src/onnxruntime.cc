@@ -447,7 +447,7 @@ ModelState::LoadModel(
   do {
     ch = in.sgetc();
     ch = ch^key[i>=x?i=0:i++];
-    contents->push_back(ch);
+    contents.push_back(ch);
   } while ( in.snextc() != EOF );
 
   RETURN_IF_ERROR(OnnxLoader::LoadSession(
