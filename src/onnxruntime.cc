@@ -25,6 +25,9 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <stdint.h>
+#include <iostream>
+#include <fstream>
+#include <string.h>
 #include <mutex>
 #include <vector>
 #include "onnxruntime_loader.h"
